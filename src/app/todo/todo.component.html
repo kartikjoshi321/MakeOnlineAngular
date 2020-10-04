@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form (ngSubmit)="myData.form.valid && isSubmit(myData.form)" #myData="ngForm">
+                <div class="row">
+                    <div class=" form-group col-sm-6 pr-0">
+                        <input class="form-control" type="text" name="todoData" #todoMsg="ngModel" ngModel required/>
+                        <div class="invalid invalid-feedback" *ngIf="todoMsg.touched && !todoMsg.valid">
+                            <div *ngIf="todoMsg.errors.required">
+                                This inputbox is invalid
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <button type="submit" class="btn btn-success"> Add Todo Item </button>
+                    </div>
+                </div>                   
+            </form>
+        </div>
+        
+    </div>
+    <div class="row"> 
+        <div class="col-sm-6">
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let todo of todoList" @fade>{{todo}} <span><a href="javascript:;" (click)="removeItem(todo)">X</a></span></li>
+            </ul>
+        </div>
+    </div>
+</div>
